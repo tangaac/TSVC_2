@@ -44,6 +44,7 @@ __attribute__((aligned(ARRAY_ALIGNMENT))) int indx[LEN_1D];
 real_t* __restrict__ xx;
 real_t* yy;
 
+#if !defined(SKIPALL) || defined(S000)
 real_t s000(struct args_t * func_args)
 {
 
@@ -63,8 +64,10 @@ real_t s000(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
+#if !defined(SKIPALL) || defined(S111)
 real_t s111(struct args_t * func_args)
 {
 
@@ -84,7 +87,9 @@ real_t s111(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1111)
 real_t s1111(struct args_t * func_args)
 {
 
@@ -104,9 +109,11 @@ real_t s1111(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
 
+#if !defined(SKIPALL) || defined(S112)
 real_t s112(struct args_t * func_args)
 {
 
@@ -126,7 +133,9 @@ real_t s112(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1112)
 real_t s1112(struct args_t * func_args)
 {
 
@@ -146,9 +155,11 @@ real_t s1112(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
 
+#if !defined(SKIPALL) || defined(S113)
 real_t s113(struct args_t * func_args)
 {
 
@@ -168,7 +179,9 @@ real_t s113(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1113)
 real_t s1113(struct args_t * func_args)
 {
 
@@ -188,9 +201,11 @@ real_t s1113(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
 
+#if !defined(SKIPALL) || defined(S114)
 real_t s114(struct args_t * func_args)
 {
 
@@ -213,9 +228,11 @@ real_t s114(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
 
+#if !defined(SKIPALL) || defined(S115)
 real_t s115(struct args_t * func_args)
 {
 
@@ -237,7 +254,9 @@ real_t s115(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1115)
 real_t s1115(struct args_t * func_args)
 {
 
@@ -259,9 +278,11 @@ real_t s1115(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
 
+#if !defined(SKIPALL) || defined(S116)
 real_t s116(struct args_t * func_args)
 {
 
@@ -284,9 +305,11 @@ real_t s116(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
 
+#if !defined(SKIPALL) || defined(S118)
 real_t s118(struct args_t * func_args)
 {
 
@@ -308,9 +331,11 @@ real_t s118(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.1
 
+#if !defined(SKIPALL) || defined(S119)
 real_t s119(struct args_t * func_args)
 {
 
@@ -332,7 +357,9 @@ real_t s119(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1119)
 real_t s1119(struct args_t * func_args)
 {
 
@@ -354,9 +381,11 @@ real_t s1119(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
 
+#if !defined(SKIPALL) || defined(S121)
 real_t s121(struct args_t * func_args)
 {
 
@@ -378,9 +407,11 @@ real_t s121(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
 
+#if !defined(SKIPALL) || defined(S122)
 real_t s122(struct args_t * func_args)
 {
 
@@ -409,9 +440,11 @@ real_t s122(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
 
+#if !defined(SKIPALL) || defined(S123)
 real_t s123(struct args_t * func_args)
 {
 
@@ -439,9 +472,11 @@ real_t s123(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
 
+#if !defined(SKIPALL) || defined(S124)
 real_t s124(struct args_t * func_args)
 {
 
@@ -469,8 +504,10 @@ real_t s124(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
+#if !defined(SKIPALL) || defined(S125)
 real_t s125(struct args_t * func_args)
 {
 
@@ -495,8 +532,10 @@ real_t s125(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
+#if !defined(SKIPALL) || defined(S126)
 real_t s126(struct args_t * func_args)
 {
 
@@ -522,9 +561,11 @@ real_t s126(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
 
+#if !defined(SKIPALL) || defined(S127)
 real_t s127(struct args_t * func_args)
 {
 
@@ -549,9 +590,11 @@ real_t s127(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.2
 
+#if !defined(SKIPALL) || defined(S128)
 real_t s128(struct args_t * func_args)
 {
 
@@ -577,9 +620,11 @@ real_t s128(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.3
 
+#if !defined(SKIPALL) || defined(S131)
 real_t s131(struct args_t * func_args)
 {
 //    global data flow analysis
@@ -599,9 +644,11 @@ real_t s131(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.3
 
+#if !defined(SKIPALL) || defined(S132)
 real_t s132(struct args_t * func_args)
 {
 //    global data flow analysis
@@ -623,9 +670,11 @@ real_t s132(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.4
 
+#if !defined(SKIPALL) || defined(S141)
 real_t s141(struct args_t * func_args)
 {
 
@@ -651,16 +700,20 @@ real_t s141(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.5
 
+#if !defined(SKIPALL) || defined(S151S)
 void s151s(real_t a[LEN_1D], real_t b[LEN_1D],  int m)
 {
     for (int i = 0; i < LEN_1D-1; i++) {
         a[i] = a[i + m] + b[i];
     }
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S151)
 real_t s151(struct args_t * func_args)
 {
 
@@ -678,14 +731,18 @@ real_t s151(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.5
 
+#if !defined(SKIPALL) || defined(S152S)
 void s152s(real_t a[LEN_1D], real_t b[LEN_1D], real_t c[LEN_1D], int i)
 {
     a[i] += b[i] * c[i];
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S152)
 real_t s152(struct args_t * func_args)
 {
 
@@ -706,9 +763,11 @@ real_t s152(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.6
 
+#if !defined(SKIPALL) || defined(S161)
 real_t s161(struct args_t * func_args)
 {
 
@@ -737,7 +796,9 @@ L10:
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1161)
 real_t s1161(struct args_t * func_args)
 {
 
@@ -766,10 +827,12 @@ L10:
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.6
 
 //int s162(int k)
+#if !defined(SKIPALL) || defined(S162)
 real_t s162(struct args_t * func_args)
 {
 //    control flow
@@ -792,10 +855,12 @@ real_t s162(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.7
 
 //int s171(int inc)
+#if !defined(SKIPALL) || defined(S171)
 real_t s171(struct args_t * func_args)
 {
 
@@ -817,10 +882,12 @@ real_t s171(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.7
 
 //int s172( int n1, int n3)
+#if !defined(SKIPALL) || defined(S172)
 real_t s172(struct args_t * func_args)
 {
 //    symbolics
@@ -843,9 +910,11 @@ real_t s172(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.7
 
+#if !defined(SKIPALL) || defined(S173)
 real_t s173(struct args_t * func_args)
 {
 //    symbolics
@@ -865,10 +934,12 @@ real_t s173(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.7
 
 //int s174(int M)
+#if !defined(SKIPALL) || defined(S174)
 real_t s174(struct args_t * func_args)
 {
 
@@ -890,10 +961,12 @@ real_t s174(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.7
 
 //int s175(int inc)
+#if !defined(SKIPALL) || defined(S175)
 real_t s175(struct args_t * func_args)
 {
 
@@ -915,9 +988,11 @@ real_t s175(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %1.7
 
+#if !defined(SKIPALL) || defined(S176)
 real_t s176(struct args_t * func_args)
 {
 
@@ -940,6 +1015,7 @@ real_t s176(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // **********************************************************
 // *                                *
@@ -949,6 +1025,7 @@ real_t s176(struct args_t * func_args)
 
 // %2.1
 
+#if !defined(SKIPALL) || defined(S211)
 real_t s211(struct args_t * func_args)
 {
 
@@ -969,9 +1046,11 @@ real_t s211(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.1
 
+#if !defined(SKIPALL) || defined(S212)
 real_t s212(struct args_t * func_args)
 {
 
@@ -992,7 +1071,9 @@ real_t s212(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1213)
 real_t s1213(struct args_t * func_args)
 {
 
@@ -1013,9 +1094,11 @@ real_t s1213(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.2
 
+#if !defined(SKIPALL) || defined(S221)
 real_t s221(struct args_t * func_args)
 {
 
@@ -1036,7 +1119,9 @@ real_t s221(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1221)
 real_t s1221(struct args_t * func_args)
 {
 
@@ -1055,9 +1140,11 @@ real_t s1221(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.2
 
+#if !defined(SKIPALL) || defined(S222)
 real_t s222(struct args_t * func_args)
 {
 
@@ -1079,9 +1166,11 @@ real_t s222(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.3
 
+#if !defined(SKIPALL) || defined(S231)
 real_t s231(struct args_t * func_args)
 {
 //    loop interchange
@@ -1102,9 +1191,11 @@ real_t s231(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.3
 
+#if !defined(SKIPALL) || defined(S232)
 real_t s232(struct args_t * func_args)
 {
 
@@ -1126,7 +1217,9 @@ real_t s232(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1232)
 real_t s1232(struct args_t * func_args)
 {
 
@@ -1148,9 +1241,11 @@ real_t s1232(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.3
 
+#if !defined(SKIPALL) || defined(S233)
 real_t s233(struct args_t * func_args)
 {
 
@@ -1175,7 +1270,9 @@ real_t s233(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S2233)
 real_t s2233(struct args_t * func_args)
 {
 
@@ -1200,8 +1297,10 @@ real_t s2233(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.3
+#if !defined(SKIPALL) || defined(S235)
 real_t s235(struct args_t * func_args)
 {
 
@@ -1224,9 +1323,11 @@ real_t s235(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.4
 
+#if !defined(SKIPALL) || defined(S241)
 real_t s241(struct args_t * func_args)
 {
 
@@ -1247,10 +1348,12 @@ real_t s241(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.4
 
 //int s242(real_t s1, real_t s2)
+#if !defined(SKIPALL) || defined(S242)
 real_t s242(struct args_t * func_args)
 {
 
@@ -1273,9 +1376,11 @@ real_t s242(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.4
 
+#if !defined(SKIPALL) || defined(S243)
 real_t s243(struct args_t * func_args)
 {
 
@@ -1297,9 +1402,11 @@ real_t s243(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.4
 
+#if !defined(SKIPALL) || defined(S244)
 real_t s244(struct args_t * func_args)
 {
 
@@ -1321,7 +1428,9 @@ real_t s244(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1244)
 real_t s1244(struct args_t * func_args)
 {
 
@@ -1342,7 +1451,9 @@ real_t s1244(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S2244)
 real_t s2244(struct args_t * func_args)
 {
 
@@ -1363,9 +1474,11 @@ real_t s2244(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.5
 
+#if !defined(SKIPALL) || defined(S251)
 real_t s251(struct args_t * func_args)
 {
 
@@ -1387,7 +1500,9 @@ real_t s251(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1251)
 real_t s1251(struct args_t * func_args)
 {
 
@@ -1410,7 +1525,9 @@ real_t s1251(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S2251)
 real_t s2251(struct args_t * func_args)
 {
 
@@ -1433,7 +1550,9 @@ real_t s2251(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S3251)
 real_t s3251(struct args_t * func_args)
 {
 
@@ -1455,9 +1574,11 @@ real_t s3251(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.5
 
+#if !defined(SKIPALL) || defined(S252)
 real_t s252(struct args_t * func_args)
 {
 
@@ -1481,9 +1602,11 @@ real_t s252(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.5
 
+#if !defined(SKIPALL) || defined(S253)
 real_t s253(struct args_t * func_args)
 {
 
@@ -1508,9 +1631,11 @@ real_t s253(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.5
 
+#if !defined(SKIPALL) || defined(S254)
 real_t s254(struct args_t * func_args)
 {
 
@@ -1533,9 +1658,11 @@ real_t s254(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.5
 
+#if !defined(SKIPALL) || defined(S255)
 real_t s255(struct args_t * func_args)
 {
 
@@ -1560,9 +1687,11 @@ real_t s255(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.5
 
+#if !defined(SKIPALL) || defined(S256)
 real_t s256(struct args_t * func_args)
 {
 
@@ -1585,9 +1714,11 @@ real_t s256(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.5
 
+#if !defined(SKIPALL) || defined(S257)
 real_t s257(struct args_t * func_args)
 {
 
@@ -1610,7 +1741,9 @@ real_t s257(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S258)
 real_t s258(struct args_t * func_args)
 {
 
@@ -1636,9 +1769,11 @@ real_t s258(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S261)
 real_t s261(struct args_t * func_args)
 {
 
@@ -1662,7 +1797,9 @@ real_t s261(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S271)
 real_t s271(struct args_t * func_args)
 {
 
@@ -1684,10 +1821,12 @@ real_t s271(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
 //int s272(real_t t)
+#if !defined(SKIPALL) || defined(S272)
 real_t s272(struct args_t * func_args)
 {
 
@@ -1712,9 +1851,11 @@ real_t s272(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S273)
 real_t s273(struct args_t * func_args)
 {
 
@@ -1737,9 +1878,11 @@ real_t s273(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S274)
 real_t s274(struct args_t * func_args)
 {
 
@@ -1764,9 +1907,11 @@ real_t s274(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S275)
 real_t s275(struct args_t * func_args)
 {
 
@@ -1790,7 +1935,9 @@ real_t s275(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S2275)
 real_t s2275(struct args_t * func_args)
 {
 
@@ -1812,9 +1959,11 @@ real_t s2275(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S276)
 real_t s276(struct args_t * func_args)
 {
 
@@ -1839,8 +1988,10 @@ real_t s276(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
+#if !defined(SKIPALL) || defined(S277)
 real_t s277(struct args_t * func_args)
 {
 
@@ -1870,9 +2021,11 @@ L20:
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S278)
 real_t s278(struct args_t * func_args)
 {
 
@@ -1900,9 +2053,11 @@ L30:
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S279)
 real_t s279(struct args_t * func_args)
 {
 
@@ -1934,7 +2089,9 @@ L30:
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1279)
 real_t s1279(struct args_t * func_args)
 {
 
@@ -1958,10 +2115,12 @@ real_t s1279(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
 //int s2710( real_t x)
+#if !defined(SKIPALL) || defined(S2710)
 real_t s2710(struct args_t * func_args)
 {
 
@@ -1997,9 +2156,11 @@ real_t s2710(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S2711)
 real_t s2711(struct args_t * func_args)
 {
 
@@ -2021,9 +2182,11 @@ real_t s2711(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.7
 
+#if !defined(SKIPALL) || defined(S2712)
 real_t s2712(struct args_t * func_args)
 {
 
@@ -2045,9 +2208,11 @@ real_t s2712(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.8
 
+#if !defined(SKIPALL) || defined(S281)
 real_t s281(struct args_t * func_args)
 {
 
@@ -2071,7 +2236,9 @@ real_t s281(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1281)
 real_t s1281(struct args_t * func_args)
 {
 
@@ -2095,9 +2262,11 @@ real_t s1281(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.9
 
+#if !defined(SKIPALL) || defined(S291)
 real_t s291(struct args_t * func_args)
 {
 
@@ -2120,9 +2289,11 @@ real_t s291(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.9
 
+#if !defined(SKIPALL) || defined(S292)
 real_t s292(struct args_t * func_args)
 {
 
@@ -2148,9 +2319,11 @@ real_t s292(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.9
 
+#if !defined(SKIPALL) || defined(S293)
 real_t s293(struct args_t * func_args)
 {
 
@@ -2170,9 +2343,11 @@ real_t s293(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.10
 
+#if !defined(SKIPALL) || defined(S2101)
 real_t s2101(struct args_t * func_args)
 {
 
@@ -2193,9 +2368,11 @@ real_t s2101(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.12
 
+#if !defined(SKIPALL) || defined(S2102)
 real_t s2102(struct args_t * func_args)
 {
 
@@ -2218,9 +2395,11 @@ real_t s2102(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %2.11
 
+#if !defined(SKIPALL) || defined(S2111)
 real_t s2111(struct args_t * func_args)
 {
 
@@ -2241,6 +2420,7 @@ real_t s2111(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // **********************************************************
 //                                *
@@ -2250,6 +2430,7 @@ real_t s2111(struct args_t * func_args)
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S311)
 real_t s311(struct args_t * func_args)
 {
 
@@ -2271,14 +2452,18 @@ real_t s311(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S31111)
 real_t test(real_t* A){
   real_t s = (real_t)0.0;
   for (int i = 0; i < 4; i++)
     s += A[i];
   return s;
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S31111)
 real_t s31111(struct args_t * func_args)
 {
 
@@ -2305,9 +2490,11 @@ real_t s31111(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S312)
 real_t s312(struct args_t * func_args)
 {
 
@@ -2329,8 +2516,10 @@ real_t s312(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return prod;
 }
+#endif
 
 // %3.1
+#if !defined(SKIPALL) || defined(S313)
 real_t s313(struct args_t * func_args)
 {
 
@@ -2352,9 +2541,11 @@ real_t s313(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return dot;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S314)
 real_t s314(struct args_t * func_args)
 {
 
@@ -2378,9 +2569,11 @@ real_t s314(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return x;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S315)
 real_t s315(struct args_t * func_args)
 {
 
@@ -2411,9 +2604,11 @@ real_t s315(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return index + x + 1;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S316)
 real_t s316(struct args_t * func_args)
 {
 
@@ -2437,8 +2632,10 @@ real_t s316(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return x;
 }
+#endif
 // %3.1
 
+#if !defined(SKIPALL) || defined(S317)
 real_t s317(struct args_t * func_args)
 {
 
@@ -2462,10 +2659,12 @@ real_t s317(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return q;
 }
+#endif
 
 // %3.1
 
 //int s318( int inc)
+#if !defined(SKIPALL) || defined(S318)
 real_t s318(struct args_t * func_args)
 {
 
@@ -2500,9 +2699,11 @@ L5:
     gettimeofday(&func_args->t2, NULL);
     return max + index + 1;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S319)
 real_t s319(struct args_t * func_args)
 {
 
@@ -2527,9 +2728,11 @@ real_t s319(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return sum;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S3110)
 real_t s3110(struct args_t * func_args)
 {
 
@@ -2562,7 +2765,9 @@ real_t s3110(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return max + xindex+1 + yindex+1;
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S13110)
 real_t s13110(struct args_t * func_args)
 {
 
@@ -2594,9 +2799,11 @@ real_t s13110(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return max + xindex+1 + yindex+1;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S3111)
 real_t s3111(struct args_t * func_args)
 {
 
@@ -2620,9 +2827,11 @@ real_t s3111(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return sum;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S3112)
 real_t s3112(struct args_t * func_args)
 {
 
@@ -2645,9 +2854,11 @@ real_t s3112(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return sum;
 }
+#endif
 
 // %3.1
 
+#if !defined(SKIPALL) || defined(S3113)
 real_t s3113(struct args_t * func_args)
 {
 
@@ -2671,9 +2882,11 @@ real_t s3113(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return max;
 }
+#endif
 
 // %3.2
 
+#if !defined(SKIPALL) || defined(S321)
 real_t s321(struct args_t * func_args)
 {
 
@@ -2693,9 +2906,11 @@ real_t s321(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.2
 
+#if !defined(SKIPALL) || defined(S322)
 real_t s322(struct args_t * func_args)
 {
 
@@ -2715,9 +2930,11 @@ real_t s322(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.2
 
+#if !defined(SKIPALL) || defined(S323)
 real_t s323(struct args_t * func_args)
 {
 
@@ -2738,9 +2955,11 @@ real_t s323(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.3
 
+#if !defined(SKIPALL) || defined(S331)
 real_t s331(struct args_t * func_args)
 {
 
@@ -2766,9 +2985,11 @@ real_t s331(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return j+1;
 }
+#endif
 
 // %3.3
 //int s332( real_t t)
+#if !defined(SKIPALL) || defined(S332)
 real_t s332(struct args_t * func_args)
 {
 
@@ -2801,9 +3022,11 @@ L20:
     gettimeofday(&func_args->t2, NULL);
     return value;
 }
+#endif
 
 // %3.4
 
+#if !defined(SKIPALL) || defined(S341)
 real_t s341(struct args_t * func_args)
 {
 
@@ -2829,9 +3052,11 @@ real_t s341(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.4
 
+#if !defined(SKIPALL) || defined(S342)
 real_t s342(struct args_t * func_args)
 {
 
@@ -2857,9 +3082,11 @@ real_t s342(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.4
 
+#if !defined(SKIPALL) || defined(S343)
 real_t s343(struct args_t * func_args)
 {
 
@@ -2887,9 +3114,11 @@ real_t s343(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.5
 
+#if !defined(SKIPALL) || defined(S351)
 real_t s351(struct args_t * func_args)
 {
 
@@ -2914,7 +3143,9 @@ real_t s351(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1351)
 real_t s1351(struct args_t * func_args)
 {
 
@@ -2939,9 +3170,11 @@ real_t s1351(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %3.5
 
+#if !defined(SKIPALL) || defined(S352)
 real_t s352(struct args_t * func_args)
 {
 
@@ -2964,10 +3197,12 @@ real_t s352(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return dot;
 }
+#endif
 
 // %3.5
 
 //int s353(int* __restrict__ ip)
+#if !defined(SKIPALL) || defined(S353)
 real_t s353(struct args_t * func_args)
 {
 
@@ -2995,6 +3230,7 @@ real_t s353(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // **********************************************************
 //                                *
@@ -3005,6 +3241,7 @@ real_t s353(struct args_t * func_args)
 // %4.1
 // %4.2
 
+#if !defined(SKIPALL) || defined(S421)
 real_t s421(struct args_t * func_args)
 {
 
@@ -3027,7 +3264,9 @@ real_t s421(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S1421)
 real_t s1421(struct args_t * func_args)
 {
 
@@ -3049,9 +3288,11 @@ real_t s1421(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.2
 
+#if !defined(SKIPALL) || defined(S422)
 real_t s422(struct args_t * func_args)
 {
 
@@ -3074,9 +3315,11 @@ real_t s422(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.2
 
+#if !defined(SKIPALL) || defined(S423)
 real_t s423(struct args_t * func_args)
 {
 
@@ -3100,9 +3343,11 @@ real_t s423(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.2
 
+#if !defined(SKIPALL) || defined(S424)
 real_t s424(struct args_t * func_args)
 {
 
@@ -3127,9 +3372,11 @@ real_t s424(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.3
 
+#if !defined(SKIPALL) || defined(S431)
 real_t s431(struct args_t * func_args)
 {
 
@@ -3153,9 +3400,11 @@ real_t s431(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.4
 
+#if !defined(SKIPALL) || defined(S441)
 real_t s441(struct args_t * func_args)
 {
 
@@ -3181,9 +3430,11 @@ real_t s441(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.4
 
+#if !defined(SKIPALL) || defined(S442)
 real_t s442(struct args_t * func_args)
 {
 
@@ -3221,9 +3472,11 @@ L50:
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.4
 
+#if !defined(SKIPALL) || defined(S443)
 real_t s443(struct args_t * func_args)
 {
 
@@ -3254,9 +3507,11 @@ L50:
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.5
 
+#if !defined(SKIPALL) || defined(S451)
 real_t s451(struct args_t * func_args)
 {
 
@@ -3276,9 +3531,11 @@ real_t s451(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.5
 
+#if !defined(SKIPALL) || defined(S452)
 real_t s452(struct args_t * func_args)
 {
 
@@ -3298,9 +3555,11 @@ real_t s452(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.5
 
+#if !defined(SKIPALL) || defined(S453)
 real_t s453(struct args_t * func_args)
 {
 
@@ -3323,14 +3582,18 @@ real_t s453(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.7
 
+#if !defined(SKIPALL) || defined(S471S)
 int s471s(void)
 {
 // --  dummy subroutine call made in s471
     return 0;
 }
+#endif
+#if !defined(SKIPALL) || defined(S471)
 
 real_t s471(struct args_t * func_args){
 
@@ -3353,9 +3616,11 @@ real_t s471(struct args_t * func_args){
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.8
 
+#if !defined(SKIPALL) || defined(S481)
 real_t s481(struct args_t * func_args)
 {
 
@@ -3378,10 +3643,12 @@ real_t s481(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.8
 
 // %4.8
+#if !defined(SKIPALL) || defined(S482)
 real_t s482(struct args_t * func_args)
 {
 
@@ -3402,10 +3669,12 @@ real_t s482(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.9
 
 //int s491(int* __restrict__ ip)
+#if !defined(SKIPALL) || defined(S491)
 real_t s491(struct args_t * func_args)
 {
 
@@ -3428,10 +3697,12 @@ real_t s491(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.11
 
 //int s4112(int* __restrict__ ip, real_t s)
+#if !defined(SKIPALL) || defined(S4112)
 real_t s4112(struct args_t * func_args)
 {
 
@@ -3456,10 +3727,12 @@ real_t s4112(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.11
 
 //int s4113(int* __restrict__ ip)
+#if !defined(SKIPALL) || defined(S4113)
 real_t s4113(struct args_t * func_args)
 {
 
@@ -3482,10 +3755,12 @@ real_t s4113(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.11
 
 //int s4114(int* ip, int n1)
+#if !defined(SKIPALL) || defined(S4114)
 real_t s4114(struct args_t * func_args)
 {
 
@@ -3513,10 +3788,12 @@ real_t s4114(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %4.11
 
 //int s4115(int* __restrict__ ip)
+#if !defined(SKIPALL) || defined(S4115)
 real_t s4115(struct args_t * func_args)
 {
 
@@ -3541,10 +3818,12 @@ real_t s4115(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return sum;
 }
+#endif
 
 // %4.11
 
 //int s4116(int* __restrict__ ip, int j, int inc)
+#if !defined(SKIPALL) || defined(S4116)
 real_t s4116(struct args_t * func_args)
 {
 
@@ -3574,9 +3853,11 @@ real_t s4116(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return sum;
 }
+#endif
 
 // %4.11
 
+#if !defined(SKIPALL) || defined(S4117)
 real_t s4117(struct args_t * func_args)
 {
 
@@ -3596,13 +3877,17 @@ real_t s4117(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
+#if !defined(SKIPALL) || defined(S4121)
 // %4.12
 
 real_t f(real_t a, real_t b){
     return a*b;
 }
 
+#endif
+#if !defined(SKIPALL) || defined(S4121)
 real_t s4121(struct args_t * func_args)
 {
 
@@ -3622,9 +3907,11 @@ real_t s4121(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VA)
 real_t va(struct args_t * func_args)
 {
 
@@ -3644,10 +3931,12 @@ real_t va(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
 //int vag( int* __restrict__ ip)
+#if !defined(SKIPALL) || defined(VAG)
 real_t vag(struct args_t * func_args)
 {
 
@@ -3670,10 +3959,12 @@ real_t vag(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
 //int vas( int* __restrict__ ip)
+#if !defined(SKIPALL) || defined(VAS)
 real_t vas(struct args_t * func_args)
 {
 
@@ -3696,9 +3987,11 @@ real_t vas(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VIF)
 real_t vif(struct args_t * func_args)
 {
 
@@ -3720,9 +4013,11 @@ real_t vif(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VPV)
 real_t vpv(struct args_t * func_args)
 {
 
@@ -3742,9 +4037,11 @@ real_t vpv(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VTV)
 real_t vtv(struct args_t * func_args)
 {
 
@@ -3764,9 +4061,11 @@ real_t vtv(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VPVTV)
 real_t vpvtv(struct args_t * func_args)
 {
 
@@ -3786,10 +4085,12 @@ real_t vpvtv(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
 //real_t vpvts( real_t s)
+#if !defined(SKIPALL) || defined(VPVTS)
 real_t vpvts(struct args_t * func_args)
 {
 
@@ -3811,9 +4112,11 @@ real_t vpvts(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VPVPV)
 real_t vpvpv(struct args_t * func_args)
 {
 
@@ -3833,9 +4136,11 @@ real_t vpvpv(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VTVTV)
 real_t vtvtv(struct args_t * func_args)
 {
 
@@ -3855,9 +4160,11 @@ real_t vtvtv(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VSUMR)
 real_t vsumr(struct args_t * func_args)
 {
 
@@ -3879,9 +4186,11 @@ real_t vsumr(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return sum;
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VDOTR)
 real_t vdotr(struct args_t * func_args)
 {
 
@@ -3903,9 +4212,11 @@ real_t vdotr(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return dot;
 }
+#endif
 
 // %5.1
 
+#if !defined(SKIPALL) || defined(VBOR)
 real_t vbor(struct args_t * func_args)
 {
 
@@ -3940,9 +4251,11 @@ real_t vbor(struct args_t * func_args)
     gettimeofday(&func_args->t2, NULL);
     return calc_checksum(__func__);
 }
+#endif
 
 typedef real_t(*test_function_t)(struct args_t *);
 
+#if !defined(SKIPALL) || defined(MAIN)
 void time_function(test_function_t vector_func, void * arg_info)
 {
     struct args_t func_args = {.arg_info=arg_info};
@@ -3957,6 +4270,8 @@ void time_function(test_function_t vector_func, void * arg_info)
     printf("%10.3f\t%f\n", taken, result);
 }
 
+#endif
+#if !defined(SKIPALL) || defined(MAIN)
 int main(int argc, char ** argv){
     int n1 = 1;
     int n3 = 1;
@@ -4119,3 +4434,4 @@ int main(int argc, char ** argv){
 
     return EXIT_SUCCESS;
 }
+#endif
