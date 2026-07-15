@@ -3,6 +3,10 @@ include ../makefiles/Makefile.defs
 # Defines the list of tests
 include loops.mk
 
+ifdef TEST
+TESTS=$(TEST)
+endif
+
 COMMON_FILES=dummy.o common.o
 
 BIN_DIR=../bin/$(COMPILER)
