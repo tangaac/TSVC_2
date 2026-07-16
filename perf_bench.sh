@@ -16,7 +16,7 @@ TESTS=(s1111 s112 s1112 s125 s127 s128 s252 s254 s255 s257 s276
        vag vas vif)
 EVENTS="cycles,instructions,branches,branch-misses,cache-misses,L1-icache-load-misses"
 RUNS=3
-VARIANT="vec"
+VARIANT="vec_default"
 BASELINE="before"
 RESULTS_DIR="perf_results"
 MAKEFILE_DIR="makefiles"
@@ -37,6 +37,7 @@ runs perf stat to collect hardware metrics, and generates reports.
 Options:
   -c, --compiler NAME   Specify a single compiler config (default: all)
   -t, --test NAME       Specify a single test (default: all)
+  -e, --events LIST     Comma-separated perf events (default: $EVENTS)
   -r, --runs N          Number of perf runs per test (default: 3)
   -v, --variant TYPE    Build variant: vec or novec (default: vec)
   --skip-built          Skip tests that already have results
@@ -47,6 +48,7 @@ Examples:
   $(basename "$0")                          # Run all compilers, all tests
   $(basename "$0") -c before -t s1111      # Single compiler + test
   $(basename "$0") -r 5                    # 5 perf runs per test
+  $(basename "$0") -e "cycles,instructions"  # Custom event list
   $(basename "$0") --skip-built            # Only run new tests
 
 Prerequisites:
@@ -124,9 +126,12 @@ build_test() {
     local test="$2"
 
     echo "  Building ${test} with ${compiler}..."
-    (cd "$SCRIPT_DIR" && make COMPILER="$compiler" TEST="$test" >/dev/null 2>&1)
-    if [[ $? -ne 0 ]]; then
+    local build_output
+    if build_output=$(cd "$SCRIPT_DIR" && make COMPILER="$compiler" TEST="$test" 2>&1); then
+        return 0
+    else
         echo "  ERROR: Build failed for ${compiler}/${test}"
+        echo "$build_output" | tail -20
         return 1
     fi
     return 0
@@ -161,8 +166,13 @@ parse_and_aggregate() {
     local test="$2"
     local result_dir="${SCRIPT_DIR}/${RESULTS_DIR}/${compiler}/${test}"
 
-    local event_names=("cycles" "instructions" "branches" "branch-misses" "cache-misses" "L1-icache-load-misses")
-    local event_keys=("cycles" "instructions" "branches" "branch_misses" "cache_misses" "L1_icache_load_misses")
+    # Parse event list from EVENTS variable
+    local event_names=()
+    local event_keys=()
+    IFS=',' read -r -a event_names <<< "$EVENTS"
+    for ev in "${event_names[@]}"; do
+        event_keys+=("$(echo "$ev" | tr '-' '_')")
+    done
 
     # Collect values from all runs
     declare -A metrics
@@ -196,11 +206,21 @@ parse_and_aggregate() {
         return 1
     fi
 
-    # Aggregate: min for cycles, avg for everything else
+    # Aggregate: min for cycles (if present), avg for everything else
     local agg=()
+    local has_cycles=false
+    local cyc_idx=-1
+    local instr_idx=-1
     for i in "${!event_names[@]}"; do
         local vals=(${metrics[$i]})
-        if (( i == 0 )); then
+        if [[ "${event_names[$i]}" == "cycles" ]]; then
+            has_cycles=true
+            cyc_idx=$i
+        fi
+        if [[ "${event_names[$i]}" == "instructions" ]]; then
+            instr_idx=$i
+        fi
+        if $has_cycles && (( i == cyc_idx )); then
             # cycles: take minimum
             local min=${vals[0]}
             for v in "${vals[@]}"; do
@@ -218,20 +238,27 @@ parse_and_aggregate() {
         fi
     done
 
-    # Calculate IPC
-    local ipc
-    if (( ${agg[0]} > 0 )); then
-        ipc=$(echo "scale=4; ${agg[1]} / ${agg[0]}" | bc)
-    else
-        ipc="0"
+    # Calculate IPC if both cycles and instructions are present
+    local ipc="N/A"
+    if $has_cycles && (( instr_idx >= 0 && ${agg[$cyc_idx]:-0} > 0 )); then
+        ipc=$(echo "scale=4; ${agg[$instr_idx]} / ${agg[$cyc_idx]}" | bc)
     fi
 
     # Write result line to CSV
-    local csv_line="${compiler},${test},${agg[0]},${agg[1]},${agg[2]},${agg[3]},${agg[4]},${agg[5]},${ipc}"
+    local csv_line="${compiler},${test}"
+    for v in "${agg[@]}"; do
+        csv_line="${csv_line},${v}"
+    done
+    csv_line="${csv_line},${ipc}"
     echo "$csv_line" >> "${SCRIPT_DIR}/${RESULTS_DIR}/results.csv.tmp"
 
     # Store aggregated data for summary generation
-    echo "${compiler},${test},${agg[0]},${agg[1]},${agg[2]},${agg[3]},${agg[4]},${agg[5]},${ipc}" >> "${SCRIPT_DIR}/${RESULTS_DIR}/agg_data.tmp"
+    local agg_line="${compiler},${test}"
+    for v in "${agg[@]}"; do
+        agg_line="${agg_line},${v}"
+    done
+    agg_line="${agg_line},${ipc}"
+    echo "$agg_line" >> "${SCRIPT_DIR}/${RESULTS_DIR}/agg_data.tmp"
 
     echo "  Done (${valid_runs} runs, IPC=${ipc})"
 }
@@ -243,25 +270,79 @@ generate_report() {
     local agg_file="${SCRIPT_DIR}/${RESULTS_DIR}/agg_data.tmp"
     local csv_tmp="${SCRIPT_DIR}/${RESULTS_DIR}/results.csv.tmp"
 
-    # Build final CSV with speedup column
+    # Build event key list
+    local event_keys=()
+    IFS=',' read -r -a event_keys <<< "$(echo "$EVENTS" | tr '-' '_')"
+    local num_events=${#event_keys[@]}
+
+    # Find cycles index
+    local cyc_idx=-1
+    for i in "${!event_keys[@]}"; do
+        if [[ "${event_keys[$i]}" == "cycles" ]]; then
+            cyc_idx=$i
+            break
+        fi
+    done
+
+    # field layout: [0]=compiler, [1]=test, [2..num_events+1]=events, [num_events+2]=IPC
+    local cyc_field=$((cyc_idx + 2))
+    local ipc_field=$((num_events + 2))
+
+    # Build CSV header
     local csv_file="${SCRIPT_DIR}/${RESULTS_DIR}/results.csv"
-    echo "compiler,test,cycles,instructions,branches,branch_misses,cache_misses,L1_icache_load_misses,IPC,speedup" > "$csv_file"
+    local header="compiler,test"
+    for key in "${event_keys[@]}"; do
+        header="${header},${key}"
+    done
+    header="${header},IPC,speedup"
+    echo "$header" > "$csv_file"
 
     # Collect baseline cycles for each test
     declare -A baseline_cycles
-    while IFS=',' read -r comp test cyc instr br brm cm icm ipc; do
-        if [[ "$comp" == "$BASELINE" ]]; then
-            baseline_cycles[$test]="$cyc"
+    while IFS= read -r line; do
+        IFS=',' read -r -a fields <<< "$line"
+        if [[ "${fields[0]}" == "$BASELINE" ]]; then
+            baseline_cycles[${fields[1]}]="${fields[$cyc_field]}"
         fi
     done < "$agg_file"
 
-    while IFS=',' read -r comp test cyc instr br brm cm icm ipc; do
+    # Write CSV with speedup
+    while IFS= read -r line; do
+        IFS=',' read -r -a fields <<< "$line"
         local speedup="1.00"
-        if [[ -n "${baseline_cycles[$test]:-}" && "${baseline_cycles[$test]}" -gt 0 ]]; then
-            speedup=$(echo "scale=2; ${baseline_cycles[$test]} / $cyc" | bc)
+        local test_name="${fields[1]}"
+        if [[ -n "${baseline_cycles[$test_name]:-}" && "${baseline_cycles[$test_name]}" -gt 0 ]]; then
+            speedup=$(echo "scale=2; ${baseline_cycles[$test_name]} / ${fields[$cyc_field]}" | bc)
         fi
-        echo "${comp},${test},${cyc},${instr},${br},${brm},${cm},${icm},${ipc},${speedup}" >> "$csv_file"
+        echo "${line},${speedup}" >> "$csv_file"
     done < "$agg_file"
+
+    # Build short labels for table columns
+    local short_labels=()
+    for key in "${event_keys[@]}"; do
+        case "$key" in
+            cycles) short_labels+=("cycles") ;;
+            instructions) short_labels+=("instrs") ;;
+            branches) short_labels+=("branches") ;;
+            branch_misses) short_labels+=("br-miss") ;;
+            cache_misses) short_labels+=("cache-miss") ;;
+            L1_icache_load_misses) short_labels+=("icache-miss") ;;
+            *) short_labels+=("$key") ;;
+        esac
+    done
+
+    # Build dynamic printf format: compiler col + event cols + IPC + speedup
+    local header_fmt="%-12s|"
+    local sep_fmt="%-12s-+"
+    local data_fmt="%-12s|"
+    for _ in "${event_keys[@]}"; do
+        header_fmt="${header_fmt} %-9s|"
+        sep_fmt="${sep_fmt}%-9s-+"
+        data_fmt="${data_fmt} %-9s|"
+    done
+    header_fmt="${header_fmt} %-7s| %s"
+    sep_fmt="${sep_fmt}%-7s-+%s"
+    data_fmt="${data_fmt} %-7s| %sx"
 
     # Generate summary table
     local summary_file="${SCRIPT_DIR}/${RESULTS_DIR}/summary.txt"
@@ -276,18 +357,38 @@ generate_report() {
 
         for test in "${TESTS[@]}"; do
             echo "=== ${test} ==="
-            printf "%-12s| %-9s| %-9s| %-9s| %-9s| %-11s| %-12s| %-7s| %s\n" \
-                "Compiler" "cycles" "instrs" "branches" "br-miss" "cache-miss" "icache-miss" "IPC" "speedup"
-            printf "%-12s-+-%-9s-+-%-9s-+-%-9s-+-%-9s-+-%-11s-+-%-12s-+-%-7s-+-%s\n" \
-                "------------" "---------" "---------" "---------" "---------" "-----------" "------------" "-------" "--------"
+            # Print header row
+            local header_args=("Compiler")
+            for lbl in "${short_labels[@]}"; do header_args+=("$lbl"); done
+            header_args+=("IPC" "speedup")
+            printf "$header_fmt" "${header_args[@]}"
+            echo ""
 
-            while IFS=',' read -r comp t cyc instr br brm cm icm ipc speedup; do
+            local sep_args=("------------")
+            for _ in "${short_labels[@]}"; do sep_args+=("---------"); done
+            sep_args+=("-------" "--------")
+            printf "$sep_fmt" "${sep_args[@]}"
+            echo ""
+
+            while IFS= read -r line; do
+                IFS=',' read -r -a fields <<< "$line"
+                local t="${fields[1]}"
                 [[ "$t" != "$test" ]] && continue
-                printf "%-12s| %-9s| %-9s| %-9s| %-9s| %-11s| %-12s| %-7s| %sx\n" \
-                    "$comp" "$(fmt_num "$cyc")" "$(fmt_num "$instr")" \
-                    "$(fmt_num "$br")" "$(fmt_num "$brm")" \
-                    "$(fmt_num "$cm")" "$(fmt_num "$icm")" \
-                    "$ipc" "$speedup"
+                # Look up speedup from CSV
+                local csv_line
+                csv_line=$(grep "^${fields[0]},${t}," "$csv_file" | head -1)
+                local speedup="1.00"
+                if [[ -n "$csv_line" ]]; then
+                    IFS=',' read -r -a csv_fields <<< "$csv_line"
+                    speedup="${csv_fields[-1]}"
+                fi
+                local data_args=("${fields[0]}")
+                for i in $(seq 2 $((num_events + 1))); do
+                    data_args+=("$(fmt_num "${fields[$i]}")")
+                done
+                data_args+=("${fields[$ipc_field]}" "$speedup")
+                printf "$data_fmt" "${data_args[@]}"
+                echo ""
             done < "$agg_file"
             echo ""
         done
@@ -316,6 +417,10 @@ main() {
                 ;;
             -t|--test)
                 selected_tests=("$2")
+                shift 2
+                ;;
+            -e|--events)
+                EVENTS="$2"
                 shift 2
                 ;;
             -r|--runs)
@@ -351,6 +456,7 @@ main() {
     echo "=========================="
     echo "Compilers: ${selected_compilers[*]}"
     echo "Tests: ${#selected_tests[@]}"
+    echo "Events: $EVENTS"
     echo "Runs: $RUNS per test"
     echo "Variant: $VARIANT"
     echo ""
