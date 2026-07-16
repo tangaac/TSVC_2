@@ -299,6 +299,7 @@ generate_report() {
 
     # Collect baseline cycles for each test
     declare -A baseline_cycles
+    set +u
     while IFS= read -r line; do
         IFS=',' read -r -a fields <<< "$line"
         if [[ "${fields[0]}" == "$BASELINE" ]]; then
@@ -316,6 +317,7 @@ generate_report() {
         fi
         echo "${line},${speedup}" >> "$csv_file"
     done < "$agg_file"
+    set -u
 
     # Build short labels for table columns
     local short_labels=()
